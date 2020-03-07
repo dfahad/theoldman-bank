@@ -22,9 +22,9 @@
     <div id = "transaction-area">
         <div class="row">
             <div class="col-md-4">
-                <div class="deposite status">
-                    <h5>Deposite</h5>
-                    <h2>$<span id="currentDeposit">00</span></h2>
+                <div class="deposit status">
+                    <h5>Deposit</h5>
+                    <h2>$<span id="currentDeposit">100</span></h2>
                 </div>
             </div>
             <div class="col-md-4">
@@ -36,7 +36,7 @@
             <div class="col-md-4">
                 <div class="balance status">
                     <h5>Balance</h5>
-                    <h2>$00</h2>
+                    <h2>$<span id="currentBalance">$1200</span></h2>
                 </div> 
             </div>
         </div>
@@ -77,13 +77,17 @@
             const depositAmount = document.getElementById("depositAmount").value;
             const depositNumber = parseFloat(depositAmount);
 
-            const currentDeposit = document.getElementById("currentDeposit").innerText;
-            const currentDepositNumber = parseFloat(currentDeposit);
-            const totalDeposit = depositNumber + currentDepositNumber;
+            updateSpanText("currentDeposit", depositNumber);
+            updateSpanText("currentBalance", depositNumber);
             
-            document.getElementById("currentDeposit").innerText = totalDeposit;
             document.getElementById("depositAmount").value = "";
         })
+        function updateSpanText(id, depositNumber){
+            const current = document.getElementById(id).innerText;
+            const currentNumber = parseFloat(current);
+            const totalAmount = depositNumber + currentNumber;
+            document.getElementById(id).innerText = totalAmount;
+        }
     </script>
 </body>
 </html>
